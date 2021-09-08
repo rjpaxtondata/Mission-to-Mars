@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body style="background-color: rgb(34, 33, 33)">
+    <div class="container">
+        <div class="jumbotron text-center" 
+         style="background-image: url('https://cdn.gamedevmarket.net/wp-content/uploads/20191203194723/9e7b841b8e47caa4badd80dfa9e1a24182d459f9.jpg'); 
+         background-size: cover; background-position: center; color: white">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape"
+                role="button" style="background-color: black; border: none; color: white;">Scrape New Data
+            </a></p>
+        </div>
+        <!-- Mars News -->
+        <div class="row" id="mars-news">
+            <div class="col-md-12">
+                <div class="media">
+                    <div class="media-body">
+                        <h2 style="color: white">Latest Mars News</h2>
+                        <h4 class="media-heading" style="color: white">{{news_title}}</h4>
+                        <p style="color: white">{{news_p}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Featured Image -->
+        <!-- First level-->
+        <div class="row" id="mars-featured-image">
+            <!-- Second level -->
+            <div class="col-xs-12 col-sm-6 col-md-8">
+                <h2 style="color: white">Featured Mars Image</h2>
+                <img src="{{feature}}" class="img-responsive" alt="Responsive image">
+            </div>
+            <!-- Optional: clear the XS cols if their content doesn't match in height -->
+            <div class="clearfix visible-xs-block"></div>
+            <!-- Mars Facts -->
+            <div class="col-md-4">
+                <div class="row" id="mars-facts">
+                    <h3 style="color: white">Mars Facts</h3>
+                        <div class="table-responsive">
+                            <!--<table class="dataframe table bordeless" style="background-color: black; color: navajowhite;">{{mars.facts | safe}}</table>-->
+                            <table border="1" class="dataframe"> 
+                                <thead>    
+                                    <tr style="text-align: right;">      
+                                        <th></th>      
+                                        <th>Mars - Earth Comparison</th>     
+                                        <th>Mars</th>      
+                                        <th>Earth</th>   
+                                    </tr>  
+                                </thead>  
+                                <tbody>    
+                                    <tr>      
+                                        <th>0</th>      
+                                        <td>Diameter:</td>     
+                                        <td>6,779 km</td>      
+                                        <td>12,742 km</td>   
+                                    </tr>    
+                                    <tr>      
+                                        <th>1</th>      
+                                        <td>Mass:</td>      
+                                        <td>6.39 × 10^23 kg</td>      
+                                        <td>5.97 × 10^24 kg</td>    
+                                    </tr>    
+                                    <tr>      
+                                        <th>2</th>      
+                                        <td>Moons:</td>      
+                                        <td>2</td>      
+                                        <td>1</td>    
+                                    </tr>    
+                                    <tr>      
+                                        <th>3</th>      
+                                        <td>Distance from Sun:</td>      
+                                        <td>227,943,824 km</td>     
+                                        <td>149,598,262 km</td>   
+                                    </tr>   
+                                    <tr>      
+                                        <th>4</th>      
+                                        <td>Length of Year:</td>      
+                                        <td>687 Earth days</td>      
+                                        <td>365.24 days</td>    
+                                    </tr>    
+                                    <tr>      
+                                        <th>5</th>      
+                                        <td>Temperature:</td>      
+                                        <td>-87 to -5 °C</td>      
+                                        <td>-88 to 58°C</td>    
+                                    </tr>  
+                                </tbody>
+                            </table>  
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hemisphere Info -->
+        <div class=row id="mars-hemispheres">
+            <!-- Subtitle -->
+            <div class="col-md-12">
+                <div class="row" id="hemisphere_title">
+                    <h2 style="text-align:center; color: white;">Mars Hemispheres</h2>
+                    <hr style="width:100%">
+                </div>
+            </div>
+            <!-- Hemisphere images -->
+            {% for hemisphere in mars.hemisphere_image_info %}
+                <div class="col-xs-6 col-md-3">
+                    <figure class="img-responsive">
+                        <div class = "thumbnail" style="background-color: black;">
+                            <a href = "{{image_urls}}" target = "_blank">
+                                <div>
+                                    <img src = "{{image_urls}}" class="img-responsive" alt = "Responsive image" style = "width:100%">
+                                    <br>
+                                    <figcaption style="text-align: left;">{{hemisphere.title}}</figcaption>
+                                    <br>
+                                </div>
+                            </a>
+                         </div>
+                    </figure>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <footer> Mission to Mars Challenge - Raheem Paxton </footer>
+</body>
+</html>
